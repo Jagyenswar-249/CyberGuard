@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { RadialGlowButton } from '../components/shared/RadialGlowButton';
+import { StaggerText } from '../components/ui/staggerText';
 
 interface SubscriptionProps {
   onNavigate: (route: string) => void;
@@ -147,7 +148,9 @@ export const Subscription: React.FC<SubscriptionProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          Enterprise Security Capacity & AI Telemetry Plans
+          <StaggerText divideBy="word" delay={0.1}>
+            Enterprise Security Capacity & AI Telemetry Plans
+          </StaggerText>
         </h1>
 
         <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">

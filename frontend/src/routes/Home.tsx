@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { UrlPhishingScanner } from '../components/analyzer/UrlPhishingScanner';
+import { StaggerText } from '../components/ui/staggerText';
 import {
   Zap,
   Sparkles,
@@ -44,7 +45,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-          Catch the cyber threat before it becomes a breach.
+          <StaggerText divideBy="word" delay={0.1}>
+            Catch the cyber threat before it becomes a breach.
+          </StaggerText>
         </h1>
 
         <div className="text-base sm:text-xl text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed">
