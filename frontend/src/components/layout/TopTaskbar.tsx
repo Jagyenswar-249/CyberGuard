@@ -170,33 +170,20 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
             )}
           </button>
 
-          {/* AUTHENTICATION: USER PROFILE WHEN LOGGED IN / LOGIN & SIGN UP WHEN LOGGED OUT */}
+          {/* AUTHENTICATION: USER NAME WHEN LOGGED IN / LOGIN & SIGN UP BUTTONS WHEN LOGGED OUT */}
           {isAuthenticated && user ? (
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => onRouteChange('profile')}
-                title={`Open Operator Profile & Usage (${user.name} - ${user.role})`}
-                className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
-                  activeRoute === 'profile'
-                    ? 'border-teal-500 bg-teal-500/20 text-teal-800 dark:text-teal-200'
-                    : 'border-teal-500/30 bg-teal-500/10 text-teal-700 dark:text-teal-300 hover:bg-teal-500/20'
-                }`}
-              >
-                <UserIcon className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
-                <span className="font-semibold text-slate-900 dark:text-slate-100">{user.name}</span>
-                <span className="hidden md:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-700 dark:text-teal-300">
-                  {user.role}
-                </span>
-              </button>
-
-              <button
-                onClick={logout}
-                title="Sign out of SOC console"
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-red-500/20 bg-red-500/10 dark:bg-red-950/30 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-all cursor-pointer"
-              >
-                <LogOut className="h-4 w-4" />
-              </button>
-            </div>
+            <button
+              onClick={() => onRouteChange('profile')}
+              title={`Logged in as ${user.name} (${user.role}) — Click to view profile & usage`}
+              className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+                activeRoute === 'profile'
+                  ? 'border-teal-500 bg-teal-500/20 text-teal-800 dark:text-teal-200'
+                  : 'border-teal-500/30 bg-teal-500/10 text-teal-700 dark:text-teal-300 hover:bg-teal-500/20 hover:border-teal-500/50'
+              }`}
+            >
+              <UserIcon className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
+              <span className="font-semibold text-slate-900 dark:text-slate-100">{user.name}</span>
+            </button>
           ) : (
             <div className="flex items-center gap-2">
               {/* LOGIN BUTTON */}

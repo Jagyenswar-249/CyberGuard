@@ -35,19 +35,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return null;
       }
     }
-    // Default demo user so analysts can immediately explore the full platform
-    return {
-      id: 'usr-9281-a',
-      name: 'Alex Vance',
-      email: 'alex.vance@cyberguard.internal',
-      role: 'SOC Analyst',
-      department: 'Threat Response & Triage',
-      plan: 'SOC Pro',
-      location: 'HQ Security Ops Center (Sector 4)',
-      clearanceLevel: 'Level 3 (Tier-2 SOC Responder)',
-      twoFactorEnabled: true,
-      token: 'jwt-bearer-mock-9281-valid-soc-auth'
-    };
+    return null;
   });
 
   useEffect(() => {
