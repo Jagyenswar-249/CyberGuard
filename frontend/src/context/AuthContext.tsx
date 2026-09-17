@@ -7,6 +7,10 @@ export interface User {
   role: 'SOC Analyst' | 'SOC Lead' | 'SecOps Engineer';
   token?: string;
   department?: string;
+  plan?: 'Community' | 'SOC Pro' | 'Enterprise';
+  location?: string;
+  clearanceLevel?: string;
+  twoFactorEnabled?: boolean;
 }
 
 interface AuthContextType {
@@ -14,6 +18,8 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, role?: 'SOC Analyst' | 'SOC Lead') => Promise<void>;
   signup: (name: string, email: string, role?: 'SOC Analyst' | 'SOC Lead') => Promise<void>;
+  updateProfile: (updated: Partial<User>) => void;
+  setPlan: (plan: 'Community' | 'SOC Pro' | 'Enterprise') => void;
   logout: () => void;
 }
 
@@ -36,7 +42,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       email: 'alex.vance@cyberguard.internal',
       role: 'SOC Analyst',
       department: 'Threat Response & Triage',
-      token: 'jwt-mock-valid-token-tier1'
+      plan: 'SOC Pro',
+      location: 'HQ Security Ops Center (Sector 4)',
+      clearanceLevel: 'Level 3 (Tier-2 SOC Responder)',
+      twoFactorEnabled: true,
+      token: 'jwt-bearer-mock-9281-valid-soc-auth'
     };
   });
 
@@ -56,6 +66,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       email,
       role,
       department: role === 'SOC Lead' ? 'Security Operations Command' : 'Threat Intelligence & Detection',
+      plan: 'SOC Pro',
+      location: 'HQ Security Ops Center (Sector 4)',
+      clearanceLevel: role === 'SOC Lead' ? 'Level 4 (SOC Lead Approver)' : 'Level 3 (Tier-2 SOC Responder)',
+      twoFactorEnabled: true,
       token: `jwt-bearer-${Date.now()}`
     };
     setUser(newUser);
@@ -68,9 +82,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       email,
       role,
       department: 'Threat Operations',
+      plan: 'SOC Pro',
+      location: 'Remote SOC Node',
+      clearanceLevel: 'Level 2 (Analyst Initiate)',
+      twoFactorEnabled: true,
       token: `jwt-bearer-${Date.now()}`
     };
     setUser(newUser);
+  };
+
+  const updateProfile = (updated: Partial<User>) => {
+    if (user) {
+      setUser({ ...user, ...updated });
+    }
+  };
+
+  const setPlan = (plan: 'Community' | 'SOC Pro' | 'Enterprise') => {
+    if (user) {
+      setUser({ ...user, plan });
+    }
   };
 
   const logout = () => {
@@ -84,6 +114,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated: !!user,
         login,
         signup,
+        updateProfile,
+        setPlan,
         logout,
       }}
     >
@@ -99,3 +131,4 @@ export const useAuth = () => {
   }
   return context;
 };
+

@@ -13,6 +13,7 @@ import {
   UserPlus,
   LogOut,
   Bell,
+  Sparkles,
   User as UserIcon
 } from 'lucide-react';
 import { RadialGlowButton } from '../shared/RadialGlowButton';
@@ -35,7 +36,8 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
     { id: 'home', label: 'URL Scanner', icon: Zap },
     { id: 'dashboard', label: 'SOC Dashboard', icon: Activity },
     { id: 'alerts', label: 'Alerts', icon: Bell },
-    { id: 'incidents', label: 'Incidents', icon: Layers }
+    { id: 'incidents', label: 'Incidents', icon: Layers },
+    { id: 'subscription', label: 'Plans', icon: Sparkles }
   ];
 
   return (
@@ -172,9 +174,13 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
           {isAuthenticated && user ? (
             <div className="flex items-center gap-2">
               <button
-                onClick={() => onRouteChange('dashboard')}
-                title={`Logged in as ${user.name} (${user.role})`}
-                className="flex items-center gap-2 rounded-lg border border-teal-500/30 bg-teal-500/10 px-3 py-1.5 text-xs font-semibold text-teal-700 dark:text-teal-300 hover:bg-teal-500/20 transition-colors cursor-pointer"
+                onClick={() => onRouteChange('profile')}
+                title={`Open Operator Profile & Usage (${user.name} - ${user.role})`}
+                className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+                  activeRoute === 'profile'
+                    ? 'border-teal-500 bg-teal-500/20 text-teal-800 dark:text-teal-200'
+                    : 'border-teal-500/30 bg-teal-500/10 text-teal-700 dark:text-teal-300 hover:bg-teal-500/20'
+                }`}
               >
                 <UserIcon className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
                 <span className="font-semibold text-slate-900 dark:text-slate-100">{user.name}</span>
@@ -186,7 +192,7 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
               <button
                 onClick={logout}
                 title="Sign out of SOC console"
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 text-slate-500 hover:text-red-500 hover:border-red-500/40 transition-colors cursor-pointer"
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-red-500/20 bg-red-500/10 dark:bg-red-950/30 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-all cursor-pointer"
               >
                 <LogOut className="h-4 w-4" />
               </button>

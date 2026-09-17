@@ -13,6 +13,8 @@ import { Incidents } from './routes/Incidents';
 import { IncidentDetail } from './routes/IncidentDetail';
 import { Login } from './routes/Login';
 import { SignUp } from './routes/SignUp';
+import { Profile } from './routes/Profile';
+import { Subscription } from './routes/Subscription';
 import { NotFound } from './routes/NotFound';
 
 export function AppContent() {
@@ -87,6 +89,10 @@ export function AppContent() {
         return <Login onNavigate={navigate} />;
       case 'signup':
         return <SignUp onNavigate={navigate} />;
+      case 'profile':
+        return <Profile onNavigate={navigate} />;
+      case 'subscription':
+        return <Subscription onNavigate={navigate} />;
       case '404':
         return <NotFound onNavigate={navigate} />;
       default:
@@ -109,7 +115,7 @@ export function AppContent() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onNavigate={navigate} />
     </div>
   );
 }

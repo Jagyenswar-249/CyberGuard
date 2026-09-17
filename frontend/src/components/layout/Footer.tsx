@@ -1,7 +1,11 @@
 import React from 'react';
-import { Shield, ShieldAlert, Cpu, Terminal, Lock } from 'lucide-react';
+import { Shield, Cpu, Terminal, Lock, Sparkles, User } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (route: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="mt-auto border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950/60 py-8 text-xs text-slate-500 dark:text-slate-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -31,10 +35,28 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800/40 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400">
-          <div>Built for Threat Intelligence Operations & Digital Trust</div>
+          <div>Built for Enterprise Threat Operations & Autonomous Digital Defense</div>
           <div className="flex items-center gap-4 mt-2 sm:mt-0">
-            <span>Offline Resilience Enabled</span>
-            <span>•</span>
+            {onNavigate && (
+              <>
+                <button
+                  onClick={() => onNavigate('subscription')}
+                  className="hover:text-teal-600 dark:hover:text-teal-400 flex items-center gap-1 cursor-pointer transition-colors"
+                >
+                  <Sparkles className="h-3 w-3 text-teal-500" />
+                  <span>Subscription Plans</span>
+                </button>
+                <span>•</span>
+                <button
+                  onClick={() => onNavigate('profile')}
+                  className="hover:text-teal-600 dark:hover:text-teal-400 flex items-center gap-1 cursor-pointer transition-colors"
+                >
+                  <User className="h-3 w-3" />
+                  <span>Operator Usage</span>
+                </button>
+                <span>•</span>
+              </>
+            )}
             <span>Threat-Intel Fallback Active</span>
           </div>
         </div>
@@ -42,3 +64,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
