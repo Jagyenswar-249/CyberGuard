@@ -181,8 +181,7 @@ export const Profile: React.FC<ProfileProps> = ({ onNavigate }) => {
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">
                   {user.name}
                 </h2>
-                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-mono bg-teal-500/15 text-teal-700 dark:text-teal-300 border border-teal-500/30">
-                  <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse"></span>
+                <div className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-mono bg-teal-500/15 text-teal-700 dark:text-teal-300 border border-teal-500/30">
                   {user.role}
                 </div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">

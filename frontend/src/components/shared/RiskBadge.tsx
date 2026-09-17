@@ -52,11 +52,11 @@ export const RiskBadge: React.FC<RiskBadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border transition-all ${getStyles()} ${sizeClasses[size]}`}
+      className={`inline-flex items-center gap-1.5 rounded-md border transition-all ${getStyles()} ${sizeClasses[size]}`}
     >
       {showDot && (
         <span
-          className={`h-1.5 w-1.5 rounded-full ${getDotColor()} ${
+          className={`h-1.5 w-1.5 rounded-xs ${getDotColor()} ${
             tier === 'Critical' ? 'animate-pulse' : ''
           }`}
         />

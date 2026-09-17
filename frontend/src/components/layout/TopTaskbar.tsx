@@ -50,19 +50,14 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
             onClick={() => onRouteChange('home')}
             className="group flex items-center gap-2.5 text-left cursor-pointer focus:outline-none"
           >
-            <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500/15 border border-teal-500/30 text-teal-600 dark:text-teal-400 shadow-[0_0_12px_rgba(20,184,166,0.2)] group-hover:scale-105 transition-transform">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500/15 border border-teal-500/30 text-teal-600 dark:text-teal-400 shadow-[0_0_12px_rgba(20,184,166,0.2)] group-hover:scale-105 transition-transform">
               <Shield className="h-4 w-4 text-teal-600 dark:text-teal-400" />
-              <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-              </span>
             </div>
             <div>
               <span className="font-display text-base font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                 CyberGuard
               </span>
-              <div className="flex items-center gap-1.5 text-[10px] text-teal-600 dark:text-teal-400 font-medium">
-                <span className="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
+              <div className="text-[10px] text-teal-600 dark:text-teal-400 font-medium">
                 AI Defense SOC
               </div>
             </div>

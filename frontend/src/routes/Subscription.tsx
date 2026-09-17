@@ -142,11 +142,6 @@ export const Subscription: React.FC<SubscriptionProps> = ({ onNavigate }) => {
     <div className="py-8 space-y-12 max-w-6xl mx-auto">
       {/* HEADER HERO */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-3.5 py-1 text-xs font-semibold text-teal-700 dark:text-teal-300">
-          <Sparkles className="h-3.5 w-3.5 text-teal-500" />
-          <span>CYBERGUARD DEFENSE TIERS & SUBSCRIPTIONS</span>
-        </div>
-
         <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           <StaggerText divideBy="word" delay={0.1}>
             Enterprise Security Capacity & AI Telemetry Plans
@@ -179,7 +174,7 @@ export const Subscription: React.FC<SubscriptionProps> = ({ onNavigate }) => {
               }`}
             >
               <span>Annual Billing</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-teal-400 text-slate-900 font-bold">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-teal-400 text-slate-900 font-bold">
                 Save 20%
               </span>
             </button>

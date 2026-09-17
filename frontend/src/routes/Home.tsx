@@ -39,11 +39,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       
       {/* HERO SECTION */}
       <section className="relative text-center max-w-4xl mx-auto space-y-6 pt-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-3.5 py-1 text-xs font-medium text-teal-600 dark:text-teal-400 backdrop-blur-md">
-          <span className="h-2 w-2 rounded-full bg-teal-500 animate-ping" />
-          <span>CyberGuard Multi-Signal AI SOC Platform</span>
-        </div>
-
         <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
           <StaggerText divideBy="word" delay={0.1}>
             Catch the cyber threat before it becomes a breach.
