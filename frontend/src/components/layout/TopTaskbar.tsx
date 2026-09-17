@@ -168,16 +168,19 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
             )}
           </button>
 
-          {/* AUTHENTICATION: LOGIN BESIDE SIGN UP BUTTON */}
+          {/* AUTHENTICATION: USER PROFILE WHEN LOGGED IN / LOGIN & SIGN UP WHEN LOGGED OUT */}
           {isAuthenticated && user ? (
             <div className="flex items-center gap-2">
               <button
                 onClick={() => onRouteChange('dashboard')}
                 title={`Logged in as ${user.name} (${user.role})`}
-                className="flex items-center gap-1.5 rounded-lg border border-teal-500/30 bg-teal-500/10 px-2.5 py-1 text-xs font-semibold text-teal-700 dark:text-teal-300 hover:bg-teal-500/20 transition-colors cursor-pointer"
+                className="flex items-center gap-2 rounded-lg border border-teal-500/30 bg-teal-500/10 px-3 py-1.5 text-xs font-semibold text-teal-700 dark:text-teal-300 hover:bg-teal-500/20 transition-colors cursor-pointer"
               >
                 <UserIcon className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
-                <span className="hidden sm:inline font-mono">{user.role}</span>
+                <span className="font-semibold text-slate-900 dark:text-slate-100">{user.name}</span>
+                <span className="hidden md:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-700 dark:text-teal-300">
+                  {user.role}
+                </span>
               </button>
 
               <button
