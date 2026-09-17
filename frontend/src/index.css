@@ -33,6 +33,7 @@
     --radial-glow-2: #e2e8f0;
     --radial-glow-3: #0d9488;
     --radial-glow-4: #ca8a04;
+    --stripe-color: #000000;
   }
 
   .dark {
@@ -61,6 +62,7 @@
     --radial-glow-2: #1e293b;
     --radial-glow-3: #14b8a6;
     --radial-glow-4: #f59e0b;
+    --stripe-color: #ffffff;
   }
 }
 
@@ -150,3 +152,18 @@ code, pre, .font-mono {
 .animate-cyber-pulse {
   animation: cyber-pulse 2.5s ease-in-out infinite;
 }
+
+/* Aurora Animation for AnimatedRays */
+@keyframes aurora-bg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.animate-aurora-bg {
+  animation: aurora-bg 60s linear infinite;
+}
+

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { TopTaskbar } from './components/layout/TopTaskbar';
 import { Footer } from './components/layout/Footer';
+import { LightLines } from './components/ui/light-lines';
+import { AnimatedRays } from './components/ui/animated-rays';
 import { Home } from './routes/Home';
 import { Dashboard } from './routes/Dashboard';
 import { UrlAnalyzer } from './routes/UrlAnalyzer';
@@ -18,6 +20,7 @@ import { Subscription } from './routes/Subscription';
 import { NotFound } from './routes/NotFound';
 
 export function AppContent() {
+  const { theme } = useTheme();
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
     const hash = window.location.hash.replace('#/', '');
     if (hash) {
@@ -101,21 +104,43 @@ export function AppContent() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 dark:bg-[#070b12] text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <div className="relative min-h-screen flex flex-col bg-slate-50 dark:bg-[#070b12] text-slate-900 dark:text-slate-100 transition-colors duration-200 overflow-x-hidden">
+      {/* AMBIENT BACKGROUNDS ACCORDING TO THEME MODE */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {theme === 'light' ? (
+          <LightLines
+            className="w-full h-full opacity-70"
+            gradientFrom="#f8fafc"
+            gradientTo="#f1f5f9"
+            lineColor="#0d9488"
+            lightColor="#14b8a6"
+            linesOpacity={0.06}
+            lightsOpacity={0.5}
+            speedMultiplier={1.2}
+          />
+        ) : (
+          <AnimatedRays className="w-full h-full opacity-60" />
+        )}
+      </div>
+
       {/* Top Unified Taskbar Header */}
-      <TopTaskbar
-        activeRoute={currentRoute}
-        onRouteChange={(route) => navigate(route)}
-        onOpenDeepfakeModal={() => navigate('analyze_identity')}
-      />
+      <div className="relative z-50">
+        <TopTaskbar
+          activeRoute={currentRoute}
+          onRouteChange={(route) => navigate(route)}
+          onOpenDeepfakeModal={() => navigate('analyze_identity')}
+        />
+      </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 px-4 sm:px-6 lg:px-8">
+      <main className="relative z-10 flex-1 px-4 sm:px-6 lg:px-8">
         {renderRoute()}
       </main>
 
       {/* Footer */}
-      <Footer onNavigate={navigate} />
+      <div className="relative z-10">
+        <Footer onNavigate={navigate} />
+      </div>
     </div>
   );
 }
