@@ -46,11 +46,18 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </h1>
 
         <div className="text-base sm:text-xl text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed">
-          One unified reasoning console for{' '}
-          <span className="inline-block min-w-[240px] font-bold text-teal-600 dark:text-teal-400 border-b-2 border-teal-500/40 pb-0.5 transition-all">
-            {rotatingWords[wordIndex]}
+          <StaggerText divideBy="word" delay={0.2}>
+            One unified reasoning console for
+          </StaggerText>{' '}
+          <span className="inline-block min-w-[240px] font-bold text-teal-600 dark:text-teal-400 border-b-2 border-teal-500/40 pb-0.5 transition-all text-center">
+            <StaggerText key={rotatingWords[wordIndex]} divideBy="letter" delay={0}>
+              {rotatingWords[wordIndex]}
+            </StaggerText>
           </span>
-          , scored, explained, and remediated with human approval.
+          <span className="text-slate-600 dark:text-slate-300">,</span>{' '}
+          <StaggerText divideBy="word" delay={0.35}>
+            scored, explained, and remediated with human approval.
+          </StaggerText>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
