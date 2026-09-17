@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { UserPlus, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
 import { RadialGlowButton } from '../components/shared/RadialGlowButton';
 
 interface SignUpProps {
@@ -109,10 +109,19 @@ export const SignUp: React.FC<SignUpProps> = ({ onNavigate }) => {
                 variant="glow"
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-2.5 text-xs font-semibold"
+                className="w-full py-2.5 text-xs font-semibold flex items-center justify-center"
               >
-                <span>{isLoading ? 'Creating Account...' : 'Complete Registration'}</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+                {isLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Registering Analyst Profile...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Complete Registration</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </>
+                )}
               </RadialGlowButton>
             </div>
           </form>

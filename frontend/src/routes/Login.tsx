@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { RadialGlowButton } from '../components/shared/RadialGlowButton';
-import { Shield, Lock, Mail, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Shield, Lock, Mail, Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react';
 
 interface LoginProps {
   onNavigate: (route: string) => void;
@@ -132,10 +132,19 @@ export const Login: React.FC<LoginProps> = ({ onNavigate }) => {
                 variant="glow"
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-2.5 text-xs font-semibold"
+                className="w-full py-2.5 text-xs font-semibold flex items-center justify-center"
               >
-                <span>{isLoading ? 'Authenticating...' : 'Sign In to Console'}</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+                {isLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Authenticating SOC Session...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Sign In to Console</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </>
+                )}
               </RadialGlowButton>
             </div>
           </form>

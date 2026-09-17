@@ -195,7 +195,7 @@ export const TopTaskbar: React.FC<TopTaskbarProps> = ({
                 variant="glow"
                 onClick={() => onRouteChange('login')}
               >
-                <LogIn className="h-3.5 w-3.5 text-teal-400" />
+                <LogIn className="h-3.5 w-3.5 text-white" />
                 <span>Login</span>
               </RadialGlowButton>
 
